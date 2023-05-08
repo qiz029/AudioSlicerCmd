@@ -104,10 +104,10 @@ print("Splitting {} where energy is below {}% for longer than {}s.".format(
 sample_rate, samples = input_data=wavfile.read(filename=input_filename, mmap=True)
 
 max_amplitude = np.iinfo(samples.dtype).max
-print(max_amplitude)
+print("max_amplitude is " + str(max_amplitude))
 
 max_energy = energy([max_amplitude])
-print(max_energy)
+print("max_energy is " + str(max_energy))
 
 window_size = int(window_duration * sample_rate)
 step_size = int(step_duration * sample_rate)
