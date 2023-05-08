@@ -61,9 +61,22 @@ silence_threshold = 1e-3
 step_duration = 0.03/10
 
 '''
+
+# Create the parser
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--input', type=str, required=True)
+parser.add_argument('--output_dir', type=str)
+
+args = parser.parse_args()
+
 # Change the arguments and the input file here
-input_file = 'C:\\Teste\\06072012-19775-P01.wav'
-output_dir = 'C:\\Teste\\'
+input_file = args.input
+if args.output_dir != "":
+    output_dir = args.output_dir
+else:
+    output_dir = "./"
+
 min_silence_length = 0.6  # The minimum length of silence at which a split may occur [seconds]. Defaults to 3 seconds.
 silence_threshold = 1e-4  # The energy level (between 0.0 and 1.0) below which the signal is regarded as silent.
 step_duration = 0.03/10   # The amount of time to step forward in the input file after calculating energy. Smaller value = slower, but more accurate silence detection. Larger value = faster, but might miss some split opportunities. Defaults to (min-silence-length / 10.).
